@@ -162,8 +162,8 @@ def get_redirect_target():
             return target
 
 class UserForm(Form):
-    community_contribute = TextField(u'Vad kan du bidra med?', [validators.required(message=u'Detta fält måste fyllas i.'), validators.Length(max=1000)], description=u"T ex programmeringskunskap eller en kram")
-    community_need = TextField(u'Vad behöver du just nu?', [validators.required(message=u'Detta fält måste fyllas i.'), validators.Length(max=1000)], description=u"T ex feedback på marknadsplan eller färsk ekologisk mango")
+    community_contribute = TextField(u'Vad kan du bidra med?', [validators.required(message=u'Detta fält måste fyllas i.'), validators.Length(max=200)], description=u"T ex programmeringskunskap eller en kram")
+    community_need = TextField(u'Vad behöver du just nu?', [validators.required(message=u'Detta fält måste fyllas i.'), validators.Length(max=200)], description=u"T ex feedback på marknadsplan eller färsk ekologisk mango")
     email = TextField(u'E-postadress där vi kan nå dig', [validators.required(message=u'Detta fält måste fyllas i.'), validators.Length(max=255)], description=u"namn@domän.se")
     company_name = TextField(u'Namn på ditt företag eller projekt', [validators.required(message=u'Detta fält måste fyllas i.')], description=u"T ex Slottet AB eller Hittepåföretag")
     website = TextField(u'Hemsida där vi kan läsa mer', [validators.required(message=u'Detta fält måste fyllas i.')], description=u"")

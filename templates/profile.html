@@ -4,9 +4,9 @@
       <div style="text-align:center;">
         <div class="page-header">
           <img src="http://graph.facebook.com/v2.3/{{ user.facebook_user_id }}/picture?type=square&width=140&height=140" style="max-width:140px;" class="img img-circle"/>
-          <h1>{{ user }}{% if current_user and user == current_user %}<a href="/edit" class="btn btn-primary"><i class="fa fa-pencil"></i> Redigera</a>{% endif %}</h1>
+          <h1>{{ user }}{% if current_user and user == current_user %} <a href="/edit" class="btn btn-primary"><i class="fa fa-pencil"></i> Redigera</a>{% endif %}</h1>
           {% if user.company_name and user.website %}
-          <p class="lead">Sysslar med {{ user.company_name }} och finns på <a href="http://{{ user.website }}">{{ user.website }}</a>.</p>
+          <p class="lead">Sysslar med <strong>{{ user.company_name }}</strong> och finns på <a href="http://{{ user.website }}">{{ user.website }}</a>.</p>
           {% endif %}
         </div>
         {% if user.community_contribute %}
@@ -17,7 +17,7 @@
         <h4>{{ user.first_name }} behöver</h4>
           <p class="lead">{{ user.community_need }}</p>
         {% endif %}
-        <a href="mailto:{{ user.email }}" class="btn btn-xlg btn-success"><i class="fa fa-envelope"></i> Kontakta {{ user.first_name }}</a>
+        <a href="mailto:{{ user.email }}?subject=Jag kan hjälpa dig med {{ user.community_need }}" class="btn btn-xlg btn-success"><i class="fa fa-envelope"></i> Kontakta {{ user.first_name }}</a>
       </div>
 
 {% endblock %}

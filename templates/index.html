@@ -8,11 +8,31 @@
       </div>
       <div class="row">
         {% for user in users %}
-        <div class="col-lg-4 col-sm-4">
-          <a href="/{{ user.permalink }}">
-            <img src="http://graph.facebook.com/v2.3/{{ user.facebook_user_id }}/picture?type=square&width=100&height=100" style="max-width:100px;" class="img img-circle"/>
-          </a>
-          <h4>{{ user }}</h4>
+        <div class="col-lg-4 col-md-6">
+          <div class="row">
+            <div class="col-lg-6">
+            <a href="/{{ user.permalink }}">
+              <img src="http://graph.facebook.com/v2.3/{{ user.facebook_user_id }}/picture?type=square&width=100&height=100" style="max-width:100px;" class="img img-circle"/>
+            </a>
+            <h4>{{ user }}</h4>
+            </div>
+            <div class="col-lg-6">
+            {% if user.community_contribute %}
+            <p>
+              <strong>Bidrar med:</strong><br/>
+              {{ user.community_contribute }}
+            </p>
+            {% endif %}
+            {% if user.community_need %}
+            <p>
+              <strong>Behöver:</strong><br/>
+              {{ user.community_need }}
+            </p>
+            {% endif %}
+             <a href="mailto:{{ user.email }}?subject=Jag kan hjälpa dig med {{ user.community_need }}" class="btn btn-xs btn-success"><i class="fa fa-envelope"></i> Kontakta {{ user.first_name }}</a>
+
+            </div>
+            </div>
         </div><!-- /.col-sm-4 -->
         {% endfor %}
       </div>
