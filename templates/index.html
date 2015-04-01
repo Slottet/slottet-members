@@ -10,7 +10,7 @@
         {% for user in users %}
         <div class="col-lg-4 col-sm-4">
           <a href="/{{ user.permalink }}">
-            <img src="http://graph.facebook.com/v2.3/{{ user.facebook_user_id }}/picture?type=large" style="max-width:100px;" class="img img-circle"/>
+            <img src="http://graph.facebook.com/v2.3/{{ user.facebook_user_id }}/picture?type=square&width=100&height=100" style="max-width:100px;" class="img img-circle"/>
           </a>
           <h4>{{ user }}</h4>
         </div><!-- /.col-sm-4 -->

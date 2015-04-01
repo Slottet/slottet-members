@@ -3,7 +3,7 @@
 
       <div style="text-align:center;">
         <div class="page-header">
-          <img src="http://graph.facebook.com/v2.3/{{ current_user.facebook_user_id }}/picture?type=large" style="max-width:140px;" class="img img-circle"/>
+          <img src="http://graph.facebook.com/v2.3/{{ current_user.facebook_user_id }}/picture?type=square&width=140&height=140" style="max-width:140px;" class="img img-circle"/>
           <h1>Hej {{ current_user.first_name }},</h1>
         </div>
         {% from "_formhelper.html" import render_field %}
