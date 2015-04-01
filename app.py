@@ -165,8 +165,8 @@ class UserForm(Form):
     community_contribute = TextField(u'Vad kan du bidra med?', [validators.required(message=u'Detta fält måste fyllas i.'), validators.Length(max=1000)], description=u"T ex programmeringskunskap eller en kram")
     community_need = TextField(u'Vad behöver du just nu?', [validators.required(message=u'Detta fält måste fyllas i.'), validators.Length(max=1000)], description=u"T ex feedback på marknadsplan eller färsk ekologisk mango")
     email = TextField(u'E-postadress där vi kan nå dig', [validators.required(message=u'Detta fält måste fyllas i.'), validators.Length(max=255)], description=u"namn@domän.se")
-    company = TextField(u'Namn på ditt företag eller projekt', [validators.optional()], description=u"T ex Slottet AB eller Hittepåföretag")
-    website = TextField(u'Hemsida där vi kan läsa mer', [validators.optional()], description=u"")
+    company_name = TextField(u'Namn på ditt företag eller projekt', [validators.required(message=u'Detta fält måste fyllas i.')], description=u"T ex Slottet AB eller Hittepåföretag")
+    website = TextField(u'Hemsida där vi kan läsa mer', [validators.required(message=u'Detta fält måste fyllas i.')], description=u"")
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/<path:permalink>', methods=['GET', 'POST'])
@@ -189,7 +189,7 @@ def edit():
         current_user.community_contribute = form.community_contribute.data
         current_user.community_need = form.community_need.data
         current_user.email = form.email.data
-        current_user.company = form.company.data
+        current_user.company_name = form.company_name.data
         current_user.website = form.website.data
         db.session.commit()
         flash(u'Tack %s! Din profil har uppdaterats' % current_user.first_name, 'primary')

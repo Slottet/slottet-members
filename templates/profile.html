@@ -6,8 +6,8 @@
           <img src="http://graph.facebook.com/v2.3/{{ user.facebook_user_id }}/picture?type=large" style="max-width:140px;" class="img img-circle"/>
           <h1>{{ user }}{% if current_user and user == current_user %}</h1>
           <a href="/edit" class="btn btn-primary"><i class="fa fa-pencil"></i> Redigera</a>{% endif %}
-          {% if user.company and user.website %}
-          <p class="lead">Sysslar med {{ user.company }} och finns på <a href="http://{{ user.website }}">{{ user.website }}</a>.</p>
+          {% if user.company_name and user.website %}
+          <p class="lead">Sysslar med {{ user.company_name }} och finns på <a href="http://{{ user.website }}">{{ user.website }}</a>.</p>
           {% endif %}
         </div>
         {% if user.community_contribute %}
