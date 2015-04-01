@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import os, urllib, hashlib, string, sendgrid, re, stripe, base64, calendar
+import os, urllib, hashlib, string, sendgrid, re
 from datetime import datetime
 from flask import Flask, request, flash, url_for, redirect, \
      render_template, abort, send_from_directory, session, abort, g, jsonify
