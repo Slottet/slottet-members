@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block body %}
+
+      <div style="text-align:center;">
+        <div class="page-header">
+          <img src="http://graph.facebook.com/v2.3/{{ user.facebook_user_id }}/picture?type=large" width="140" height="140" class="img img-circle"/>
+          <h1>{{ user }}</h1>
+          {% if user.company and user.website %}
+          <p class="lead">Sysslar med {{ user.company }} och finns på <a href="http://{{ user.website }}">{{ user.website }}</a>.</p>
+          {% endif %}
+        </div>
+        <h4>{{ user.first_name }} kan bidra med</h4>
+          <p class="lead">{{ user.community_contribute }}</p>
+        <h4>{{ user.first_name }} behöver</h4>
+          <p class="lead">{{ user.community_need }}</p>
+        <a href="mailto:{{ user.email }}" class="btn btn-xlg btn-success"><i class="fa fa-envelope"></i> Kontakta {{ user.first_name }}</a>
+      </div>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block body %}
+
+
+      <div class="page-header">
+        <h1>Vi på Slottet</h1>
+        <p class="lead">{{ users|count }} personer sitter på Slottet.</p>
+      </div>
+      <div class="row">
+        {% for user in users %}
+        <div class="col-lg-4 col-sm-4">
+          <a href="/{{ user.permalink }}">
+            <img src="http://graph.facebook.com/v2.3/{{ user.facebook_user_id }}/picture?type=large" width="100" height="100" class="img img-circle"/>
+          </a>
+          <h4>{{ user }}</h4>
+        </div><!-- /.col-sm-4 -->
+        {% endfor %}
+      </div>
+      <br/><br/>
+
+      <div class="" style="text-align:center;">
+      {% if current_user.is_authenticated(): %}
+        <div class="alert alert-success" role="alert">
+          <p class="lead">Inloggad som {{ current_user }}. <a href="/logout">Logga ut</a></p>
+        </div>
+      {% else %}
+       <a href="/login" class="btn btn-xlg btn-facebook" style="text-align:center;">Logga in med <i class="fa fa-facebook-square"></i> Facebook</a>
+       <h4>för lägga till dig</h4>
+       {% endif %}
+       </div>
+
+
+      <div class="page-header">
+        <h1>Utvecklare?</h1>
+        <p class="lead">Bidra till källkoden <a href="">på Github</a>.</p>
+      </div>
+
+
+
+{% endblock %}

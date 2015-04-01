@@ -1,0 +1,1 @@
+web: gunicorn --log-file=- app:app -b 0.0.0.0:$PORT -w 3 --timeout 120 --keep-alive 5 --log-level debug

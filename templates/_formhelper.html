@@ -1,0 +1,37 @@
+{% macro render_field(field, hide_label = False) %}
+{% if field.type == "FileField" %}
+  <div class="form-group">
+    {{field.label}}{% if field.flags.required %}*{% endif %}
+    {{field()}}
+  </div>
+  {% elif field.type == "HiddenField" %}
+  {{field()}}
+  {% elif field.type == "BooleanField" %}
+  <div class="form-group" id="form-group-{{field.name}}">
+  {{ field }} {{ field.label }}
+  </div>
+  {% elif hide_label == True %}
+  <div class="form-group" id="form-group-{{field.name}}">
+    {{field(class_='input-xlarge', class='form-control', placeholder=field.description)}}
+    {% if field.errors %}
+    <div class="alert bg-primary lead">
+    {% for error in field.errors %}
+      {{ error }}
+    {% endfor %}
+    </div>
+  {% endif %}
+  </div>
+  {% else %}
+  <div class="form-group" id="form-group-{{field.name}}">
+    {{field.label}}{% if field.flags.required %}*{% endif %}
+    {{field(class_='input-xlarge', class='form-control', placeholder=field.description)}}
+    {% if field.errors %}
+    <div class="alert bg-primary lead">
+    {% for error in field.errors %}
+      {{ error }}
+    {% endfor %}
+    </div>
+  {% endif %}
+  </div>
+{% endif %}
+{% endmacro %}

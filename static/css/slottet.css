@@ -1,0 +1,36 @@
+html, body {
+	margin-top:20px;
+}
+
+.btn-xlg {
+	padding: 14px 20px;
+	font-size: 24px;
+	line-height: 1.5;
+	border-radius: 8px;
+}
+
+.btn-facebook, .facebook-container {
+	background: #3b5998;
+	color:#fff;
+	-webkit-box-shadow: 0 0 0 2px #3b5998;
+	-moz-box-shadow: 0 0 0 2px #3b5998;
+	box-shadow: 0 0 0 2px #3b5998;
+}
+
+.btn-facebook:hover {
+	background: #2d3e75;
+	color:#fff;
+	-webkit-box-shadow: 0 0 0 2px #2d3e75;
+	-moz-box-shadow: 0 0 0 2px #2d3e75;
+	box-shadow: 0 0 0 2px #2d3e75;
+}
+
+#form-group-community_contribute label, #form-group-community_need label {
+	font-size:28px;
+	font-weight: normal;
+}
+
+form {
+	width:60%;
+	margin:0 auto;
+}
