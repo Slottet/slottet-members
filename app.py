@@ -1,20 +1,26 @@
 # -*- coding: utf-8 -*-
-import os, urllib, hashlib, string, sendgrid, re
+import os, urllib, hashlib, string, sendgrid, re, base64
+from sendgrid import SendGridError, SendGridClientError, SendGridServerError
 from datetime import datetime
 from flask import Flask, request, flash, url_for, redirect, \
      render_template, abort, send_from_directory, session, abort, g, jsonify
 from flask_sqlalchemy import SQLAlchemy
-from werkzeug.utils import secure_filename
+from  sqlalchemy.sql.expression import func, select
 from werkzeug.security import generate_password_hash, check_password_hash
 from wtforms import Form, BooleanField, TextField, PasswordField, TextAreaField, SelectField, FileField, HiddenField, DateField, IntegerField, DateTimeField, validators, ValidationError
+from wtforms.ext.sqlalchemy.orm import QuerySelectField, QuerySelectMultipleField
 from slugify import slugify
 from flask.ext.login import LoginManager, current_user, current_app, login_required, login_user, logout_user, confirm_login, fresh_login_required
 from flask_oauth import OAuth, OAuthException
 from functools import wraps
 from flask.ext.sqlalchemy import SQLAlchemy
+from sqlalchemy.orm import object_session
 from sqlalchemy import or_, not_
+from  sqlalchemy.sql.expression import func
 from flask.ext.heroku import Heroku
+from uuid import uuid4
 from urlparse import urlparse, urljoin
+from random import *
 
 app = Flask(__name__)
 
