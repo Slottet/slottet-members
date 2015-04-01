@@ -2,12 +2,20 @@
 # manage.py
 from flask.ext.script import Manager, prompt_bool
 from flask.ext.migrate import Migrate, MigrateCommand
-from app import app, db, Role
+from app import app, db, Role, date, datetime, timedelta, User
 
 migrate = Migrate(app, db)
 
 manager = Manager(app)
 manager.add_command('db', MigrateCommand)
+
+@manager.command
+def send_email():
+    weekday = date.today().weekday()
+    if weekday == 2:
+        users = User.query.all()
+        for user in users:
+            print user.send_email()
 
 @manager.command
 def add_roles():

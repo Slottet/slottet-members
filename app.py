@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import os, urllib, hashlib, string, sendgrid, re, base64
 from sendgrid import SendGridError, SendGridClientError, SendGridServerError
-from datetime import datetime
+from datetime import datetime, date, timedelta
 from flask import Flask, request, flash, url_for, redirect, \
      render_template, abort, send_from_directory, session, abort, g, jsonify
 from flask_sqlalchemy import SQLAlchemy
@@ -50,6 +50,7 @@ facebook = oauth.remote_app('facebook',
     consumer_secret=app.config['FACEBOOK_APP_SECRET'],
     request_token_params={'scope': 'email'}
 )
+sg = sendgrid.SendGridClient('app35447021@heroku.com', 'sjijthkr', raise_errors=True)
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -133,6 +134,15 @@ class User(db.Model):
     def __unicode__(self):
         return self.first_name + " " + self.last_name
 
+    def send_email(self):
+        subject = u"Möjligheter denna vecka på Slottet"
+        message = render_template('email.html',
+        user=self,
+        users=User.query.order_by(func.random()).all()
+        )
+        return send_email(self.email, subject, message), "%s: Meddelandet skickades till %s" % (datetime.now(), self.email)
+
+
 # Login required decorator. Supports Facebook Login. v0.2
 def login_required(role="ANY"):
     def wrapper(fn):
@@ -177,7 +187,7 @@ def index(permalink = ""):
             abort(404)
         return render_template('profile.html', user=user) 
     else:
-        users = User.query.all()
+        users = User.query.order_by(func.random()).all()
         return render_template('index.html', users=users)
 
 

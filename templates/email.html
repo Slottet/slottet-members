@@ -1,0 +1,14 @@
+Hej {{ user.first_name }},<br/><br/>
+
+Här kommer veckans möjligheter på Slottet.<br/><br/>
+
+{% for user in users %}
+	{% if user.community_need and user.community_contribute %}
+	<strong>{{ user }}</strong> bidrar med {{ user.community_contribute }} och behöver {{ user.community_need }}.<br/><br/>
+	{% endif %}
+{% endfor %}
+<br/>
+Här kan du uppdatera din profil tills nästa vecka:<br/>
+<a href="http://slottet-members.herokuapp.com/edit">http://slottet-members.herokuapp.com/edit</a><br/><br/>
+
+Puss och kram från e-postrektorn
