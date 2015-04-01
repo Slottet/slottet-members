@@ -3,16 +3,21 @@
 
       <div style="text-align:center;">
         <div class="page-header">
-          <img src="http://graph.facebook.com/v2.3/{{ user.facebook_user_id }}/picture?type=large" width="140" height="140" class="img img-circle"/>
-          <h1>{{ user }}</h1>
+          <img src="http://graph.facebook.com/v2.3/{{ user.facebook_user_id }}/picture?type=large" style="max-width:140px;" class="img img-circle"/>
+          <h1>{{ user }}{% if user == current_user %}</h1>
+          <a href="/edit" class="btn btn-primary"><i class="fa fa-pencil"></i> Redigera</a>{% endif %}
           {% if user.company and user.website %}
           <p class="lead">Sysslar med {{ user.company }} och finns på <a href="http://{{ user.website }}">{{ user.website }}</a>.</p>
           {% endif %}
         </div>
+        {% if user.community_contribute %}
         <h4>{{ user.first_name }} kan bidra med</h4>
           <p class="lead">{{ user.community_contribute }}</p>
+        {% endif %}
+        {% if user.community_need %}
         <h4>{{ user.first_name }} behöver</h4>
           <p class="lead">{{ user.community_need }}</p>
+        {% endif %}
         <a href="mailto:{{ user.email }}" class="btn btn-xlg btn-success"><i class="fa fa-envelope"></i> Kontakta {{ user.first_name }}</a>
       </div>
 
