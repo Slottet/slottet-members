@@ -12,6 +12,7 @@ from flask.ext.login import LoginManager, current_user, current_app, login_requi
 from flask_oauth import OAuth, OAuthException
 from functools import wraps
 from flask.ext.sqlalchemy import SQLAlchemy
+from sqlalchemy import or_, not_
 from flask.ext.heroku import Heroku
 from urlparse import urlparse, urljoin
 
