@@ -238,6 +238,7 @@ def facebook_authorized(resp):
         user_role = Role.query.filter_by(name="USER").first()
         user.role = user_role
         db.session.add(user)
+        db.session.commit()
         user.send_email()
     db.session.commit()
     login_user(user)
