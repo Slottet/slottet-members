@@ -237,7 +237,8 @@ def facebook_authorized(resp):
             user.gender = me.data['gender']
         user_role = Role.query.filter_by(name="USER").first()
         user.role = user_role
-        db.session.add(user)   
+        db.session.add(user)
+        user.send_email()
     db.session.commit()
     login_user(user)
     # return redirect(request.args.get('next') or url_for('edit'))
