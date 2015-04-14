@@ -4,7 +4,9 @@ Här kommer veckans möjligheter på Slottet.<br/><br/>
 
 {% for user in users %}
 	{% if user.community_need and user.community_contribute %}
-	<strong><a href="mailto:{{ user.email }}?subject=Jag kan hjälpa dig med {{ user.community_need }}">{{ user }}</a></strong> bidrar med {{ user.community_contribute }} och behöver {{ user.community_need }}.<br/><br/>
+	<strong><a href="mailto:{{ user.email }}?subject=Jag kan hjälpa dig med {{ user.community_need }}">{{ user }}</a></strong> bidrar med {{ user.community_contribute }} och behöver {{ user.community_need }}.<br/>
+	<a href="mailto:{{ user.email }}?subject=Jag kan hjälpa dig med {{ user.community_need }}">{{ user.email }}</a>
+	<br/><br/>
 	{% endif %}
 {% endfor %}
 --
