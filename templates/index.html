@@ -1,11 +1,23 @@
 {% extends "layout.html" %}
 {% block body %}
-
+  
 
       <div class="page-header">
         <h1>Människorna på Slottet</h1>
-        <p class="lead">{{ users|count }} personer bor på Slottet.</p>
+        <p class="lead">{{ users|count }} på Slottet har talat om sina behov och färdigheter.</p>
       </div>
+      
+      <div class="" style="text-align:center;">
+      {% if current_user.is_authenticated(): %}
+        <div class="alert alert-success" role="alert">
+          <p class="lead">Inloggad som {{ current_user }}. <a href="/logout">Logga ut</a></p>
+        </div>
+      {% else %}
+       <a href="/login" class="btn btn-xlg btn-facebook" style="text-align:center;">Logga in med <i class="fa fa-facebook-square"></i> Facebook</a>
+       <h4>för att tala om vad du behöver</h4>
+       {% endif %}
+       </div>
+
       <div class="row">
         {% for user in users %}
         <div class="col-lg-4 col-md-4 col-sm-6" style="height:305px;">
@@ -45,7 +57,7 @@
         </div>
       {% else %}
        <a href="/login" class="btn btn-xlg btn-facebook" style="text-align:center;">Logga in med <i class="fa fa-facebook-square"></i> Facebook</a>
-       <h4>för lägga till dig</h4>
+       <h4>för att tala om vad du behöver</h4>
        {% endif %}
        </div>
 
@@ -54,6 +66,11 @@
         <h1>Utvecklare?</h1>
         <p class="lead">Bidra till källkoden <a href="https://github.com/Slottet/slottet-members" target="_blank">på Github</a>.</p>
       </div>
+
+      <div class="" style="text-align:center;">
+        <p>Tjänsten är författad av <a href="http://www.perjonsson.org" target="_blank">Per Jonsson</a> och källkoden finns gratis <a href="https://github.com/Slottet/slottet-members" target="_blank">på Github</a>. Share with pride.</p>
+      </div>
+      <br/><br/>
 
 
 
