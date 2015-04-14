@@ -4,11 +4,15 @@ Här kommer veckans möjligheter på Slottet.<br/><br/>
 
 {% for user in users %}
 	{% if user.community_need and user.community_contribute %}
-	<strong>{{ user }}</strong> bidrar med {{ user.community_contribute }} och behöver {{ user.community_need }}.<br/><br/>
+	<strong><a href="mailto:{{ user.email }}?subject=Jag kan hjälpa dig med {{ user.community_need }}">{{ user }}</a></strong> bidrar med {{ user.community_contribute }} och behöver {{ user.community_need }}.<br/><br/>
 	{% endif %}
 {% endfor %}
-<br/>
-Här kan du uppdatera din profil tills nästa vecka:<br/>
+--
+<br/><br/>
+Detta möjlighetsbrev skickas ut varje måndag. Här kan du uppdatera din profil tills nästa gång:<br/>
 <a href="http://slottet-members.herokuapp.com/edit">http://slottet-members.herokuapp.com/edit</a><br/><br/>
 
-Puss och kram från e-postrektorn
+Slottsliga hälsningar,<br/>
+Per
+<br/><br/>
+Ps. Är du utvecklare och vill bidra till appen kan du göra det <a href="https://github.com/Slottet/slottet-members">på Github</a>.

@@ -9,10 +9,17 @@ migrate = Migrate(app, db)
 manager = Manager(app)
 manager.add_command('db', MigrateCommand)
 
+# Only for errors
+@manager.command
+def manual_send():
+    users = User.query.all()
+    for user in users:
+        print user.send_email()
+
 @manager.command
 def send_email():
     weekday = date.today().weekday()
-    if weekday == 2:
+    if weekday == 0:
         users = User.query.all()
         for user in users:
             print user.send_email()
