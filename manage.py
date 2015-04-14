@@ -11,7 +11,7 @@ manager.add_command('db', MigrateCommand)
 
 # Only for errors
 @manager.command
-def manual_send():
+def send_email_manually():
     users = User.query.all()
     for user in users:
         print user.send_email()

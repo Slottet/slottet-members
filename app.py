@@ -136,7 +136,8 @@ class User(db.Model):
         return self.first_name + " " + self.last_name
 
     def send_email(self):
-        subject = u"Möjligheter denna vecka på Slottet"
+        week_number = date.today().isocalendar()[1]
+        subject = u"Möjligheter vecka %s på Slottet" % week_number
         message = render_template('email.html',
         user=self,
         users=User.query.order_by(func.random()).all()
