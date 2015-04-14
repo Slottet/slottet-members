@@ -64,7 +64,6 @@ def unauthorized_callback():
 @app.before_request
 def before_request():
     g.user = current_user
-    g.domain = app.config['APP_DOMAIN_NAME']
 
 class Role(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
@@ -140,7 +139,8 @@ class User(db.Model):
         subject = u"Möjligheter vecka %s på Slottet" % week_number
         message = render_template('email.html',
         user=self,
-        users=User.query.order_by(func.random()).all()
+        users=User.query.order_by(func.random()).all(),
+        domain=app.config['APP_DOMAIN_NAME']
         )
         return send_email(self.email, subject, message), "%s: Meddelandet skickades till %s" % (datetime.now(), self.email)
 
