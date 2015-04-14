@@ -64,6 +64,7 @@ def unauthorized_callback():
 @app.before_request
 def before_request():
     g.user = current_user
+    g.domain = app.config['APP_DOMAIN_NAME']
 
 class Role(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
